@@ -50,37 +50,57 @@ it reads file everytime powershell is opened
 
 ```
 
-## 
+## Keylogger for powershell
 ```
 
-
-
-```
-
-##
-```
-
-
+start-transcript C:\commands.txt
 
 ```
 
-##
+## trusted hosts
 ```
 
+get-item WSMan:\localhost\client\trustedhosts
 
+set-item WSMan:\localhost\client\trustedhosts -value 10.1.0.3
 
-```
-
-##
-```
+get-item WSMan:\localhost\client\trustedhosts
 
 
 
 ```
 
-##
+## PS Remoting
 ```
 
+$session = New-PSSession -computername 10.1.0.3 -credentials student
+enter-pssession $session
+
+Invoke-command -computername file-server,domain-controller {get-service} -asjob==(background)
+Recieve-job <job #>
+
+```
+
+## downloads
+```
+
+$url = "longassurl"
+$output = "PSScriptroot\bunch of bs"
+$wc = new-object system.net.webclient
+$wc.downloadfile($url, $output)
+(new-object system.net.webclient).downloadfile($url, $output)
+
+```
+
+# Stack #4
+```
+
+10.50.36.106 - admin station?
+andy.dwyer : BurtMacklinFBI
+
+start2347 start85678
+
+xfreerdp /v:10.50.25.78 /u:student +glyph-cache +clipboard +dynamic-resolution
 
 
 ```
