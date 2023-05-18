@@ -34,6 +34,7 @@ NTOSKRNL  NTOSKRNL                        NTOSKRNL
 ```
 
 boot.ini -- old
+ntldr - old
 
 ```
 
@@ -89,7 +90,14 @@ Boot Configuration Data
 BCD-config - bcdedit.exe
 backup bcd - bcdedit /export C:\SAVEDBCD
 
-
+bcdedit
+bcdedit /export C:\BCD.bk -- create backup of important file
+bcdedit /import C:\BCD.bk -- 
+bcdedit /set {current} description "Windows 7 - Lion Den"
+bcdedit /create {ntldr} /d "Windows XP Pro SP2 - Tiger Paw"
+bcdedit /set {ntldr} device partition=C:
+bcdedit /set {ntldr} path /ntldr
+bcdedit /delete {ntldr}
 
 ```
 
@@ -121,10 +129,10 @@ Assists in finding what happened next
 
 ```
 
-##
+## Services
 ```
 
-
+sc query spooler
 
 ```
 
