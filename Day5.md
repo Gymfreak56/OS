@@ -92,34 +92,68 @@ grubx64.efi Located on an EFI partition or in /boot loads…
 uncompress itself into RAM
 Detects CPU type, establishes memory management, establishes page tables
 mounts the root of the file system
-executes /sbin/
+executes /sbin/init or system daemon. The first process started by kernel (Id=1)
 
 sudo strace cat /etc/passwd
 
 lsmod - list modules
 
+```
 
+## Init
+```
+
+starts sysv(legacy) or systemd(new)
+sysv:
+/etc/init
+/etc/inittab
+
+systemd:
+/lib/systemd
+
+/etc/rc3.d -- links to services
 
 ```
 
-##
+## Run Levels sysv
 ```
 
+0
 
+Halt
+
+Shutdown the system
+
+1   Single User                                       Allow a single user to login session with No network functionality. Used to troubleshoot.
+
+2   Multi-user mode                                   Allow multiple user to login sessions with No network functionality.
+
+3   Multi-user mode with networking                   Allow multiple user to login sessions with complete networking functionality
+
+4   Not used/user-definable                           Nothing, cab be set to anything
+
+5   Multi-user mode with networking and GUI Desktop   Allow multiple user to login sessions with complete networking functionality and a graphical desktop instead of a Bash terminal
+
+6   Reboot                                            Restart the system
 
 ```
 
-##
+## Run levels systemd
 ```
 
+0   Halt                                                    poweroff.target
 
+1   Single User                                             rescue.target
 
-```
+2   Multi-user mode                                         multi-user.target
 
-##
-```
+3   Multi-user mode with networking                         multi-user.target
 
+4   Not used/user-definable                                 multi-user.target
 
+5   Multi-user mode with networking and GUI Desktop         graphical.target
+
+6   Reboot                                                  reboot.target
 
 ```
 
