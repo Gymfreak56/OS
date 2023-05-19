@@ -118,11 +118,7 @@ systemd:
 ## Run Levels sysv
 ```
 
-0
-
-Halt
-
-Shutdown the system
+0   Halt                                              Shutdown the system
 
 1   Single User                                       Allow a single user to login session with No network functionality. Used to troubleshoot.
 
