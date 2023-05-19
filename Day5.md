@@ -106,7 +106,7 @@ lsmod - list modules
 starts sysv(legacy) or systemd(new)
 sysv:
 /etc/init
-/etc/inittab
+/etc/inittab -- default run level
 
 systemd:
 /lib/systemd
