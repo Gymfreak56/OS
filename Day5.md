@@ -7,6 +7,7 @@ BIOS
 MBR
 GRUB
 KERNEL
+INIT
 RUNLEVEL
 
 ```
@@ -50,22 +51,52 @@ lsblk
 
 ```
 
-## 
+## GPT (GUID Partition Table)
 ```
 
-
-
-```
-
-## 
-```
-
-
+not backwards compatible
+MBR = 2TB
+GPT = 9ZB
 
 ```
 
-##
+## GRUB
 ```
+
+/boot/grub/menu.lst
+Selects Kernel
+
+
+
+MBR:
+Stage 1 : boot.img located in the first 440 bytes of the MBR loads…
+
+Stage 1.5 : core.img located in the MBR between the bootstrap and first partition. It loads…
+
+Stage 2 : /boot/grub/i386-pc/normal.mod which loads the grub menu and then reads
+
+              /boot/grub/grub.cfg Which displays a list of Linux kernels available to load on the system
+
+CPT:
+grubx64.efi Located on an EFI partition or in /boot loads…
+
+/boot/grub/x86_64-efi/normal.mod
+
+/boot/grub/grub.cfg Which displays a list of Linux kernels available to load on the system
+
+```
+
+## Kernel
+```
+
+uncompress itself into RAM
+Detects CPU type, establishes memory management, establishes page tables
+mounts the root of the file system
+executes /sbin/
+
+sudo strace cat /etc/passwd
+
+lsmod - list modules
 
 
 
