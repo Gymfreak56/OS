@@ -122,10 +122,10 @@ script block logging -
 
 ```
 
-## SID  
+## SID  of a service
 ```
 
-
+sc getsid <service name>
 
 ```
 
